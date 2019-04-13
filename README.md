@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://www.tensorflow.org/images/tf_logo_social.png">
+  <img src="https://cdn-images-1.medium.com/max/1600/1*dt9wfyGxd9vujYPAhXO_2g.jpeg">
 </div>
 
 --------------------------------------------------------------------------------
