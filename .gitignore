@@ -103,4 +103,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 .idea
-.idea/
+tutorials/02-Basic/02-Input_Pipeline/dataset
