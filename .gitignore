@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 .idea
 tutorials/02-Basic/02-Input_Pipeline/dataset
+tutorials/02-Basic/05-Custom_Training_Sequence/dataset
