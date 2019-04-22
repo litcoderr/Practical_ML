@@ -30,6 +30,11 @@ class CustomLayer(tf.keras.layers.Layer):
     def call(self, input):
         return tf.matmul(input, self.kernel)
 
+    def get_config(self):
+        config = super(CustomLayer, self).get_config()
+        config.update({'units': self.n_output})
+        return config
+
 
 custom_layer_model = tf.keras.Sequential([
     tf.keras.layers.Flatten(input_shape=(28,28)),
@@ -38,6 +43,18 @@ custom_layer_model = tf.keras.Sequential([
 ])
 
 # 3. Custom Model
+class CustomModel(tf.keras.Model):
+    def __init__(self):
+        super(CustomModel, self).__init__()
+        self.flatten_layer = tf.keras.layers.Flatten(input_shape=(28, 28))
+        self.custom_layer = CustomLayer(10)
+        self.relu = tf.keras.layers.ReLU()
+
+    def call(self, inputs):
+        output = self.flatten_layer(inputs)
+        output = self.custom_layer(output)
+        output = self.relu(output)
+        return output
 
 
 if __name__ == '__main__':
@@ -50,3 +67,11 @@ if __name__ == '__main__':
     # 2. Running Custom Layers
     output = custom_layer_model(input)
     print("output of custom layer model : {}".format(output.shape))
+    print("config : {}".format(custom_layer_model.get_config()))
+
+    # 3. Running Custom Model
+    model = CustomModel()
+    output = model(input)
+    print("output of custom model : {}".format(output.shape))
+
+    print(model.summary())
